@@ -6,4 +6,6 @@
 
 * The receiver application is a service that must be run before sending a file. It basically monitors any file creation event on a specific directory path. As soon as a file is received it will catch the file detect the encryption mechanism applied earlier, applies the appropriate decryption algorithm to get back the original data.
 
-<a href="https://youtu.be/QnuAnOgVisU" target="_blank">Here</a> is a demo video.
+## <a href="https://youtu.be/QnuAnOgVisU" target="_blank">Here</a> is a demo video.
+
+<a href="https://tecadmin.net/how-to-create-sftp-only-user-in-ubuntu-20-04/">Here</a> is an article on how you can create sftp user on Ubuntu.
