@@ -5,48 +5,10 @@ import subprocess
 import sys
 import time
 
-from cryptography.fernet import Fernet
+from AesDecryptor import AesDecryptor
+from RotDecryptor import RotDecryptor
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
-
-
-def rotDecrypt(file_name):
-    # opening the encrypted file
-    with open(file_name, "rb") as enc_file:
-        encrypted = enc_file.read()
-
-    decrypted = ""
-    for c in encrypted:
-        if ((c >= 'a' and c <= 'm') or (c >= 'A' and c <= 'M')):
-            decrypted += chr(ord(c) + 13)
-        elif ((c >= 'n' and c <= 'z') or (c >= 'N' and c <= 'Z')):
-            decrypted += chr(ord(c) - 13)
-        else:
-            decrypted += c
-
-    # opening the file in write mode and
-    # writing the decrypted data
-    with open(file_name, "wb") as dec_file:
-        dec_file.write(decrypted)
-        print("File is successfully decrypted")
-
-
-def aesDecrypt(file_name, key):
-    # using the generated key
-    fernet = Fernet(key)
-
-    # opening the encrypted file
-    with open(file_name, "rb") as enc_file:
-        encrypted = enc_file.read()
-
-    # decrypting the file
-    decrypted = fernet.decrypt(encrypted)
-
-    # opening the file in write mode and
-    # writing the decrypted data
-    with open(file_name, "wb") as dec_file:
-        dec_file.write(decrypted)
-        print("File is successfully decrypted")
 
 
 def on_created(event):
@@ -65,9 +27,9 @@ def on_created(event):
 
         # print("key: ", key)
         if key == "13":
-            rotDecrypt(src_path)
+            RotDecryptor.run(src_path)
         else:
-            aesDecrypt(src_path, key)
+            AesDecryptor.run(src_path, key)
 
 
 if __name__ == "__main__":
