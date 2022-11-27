@@ -6,4 +6,4 @@
 
 * The receiver application is a service that must be run before sending a file. It basically monitors any file creation event on a specific directory path. As soon as a file is received it will catch the file detect the encryption mechanism applied earlier, applies the appropriate decryption algorithm to get back the original data.
 
-<a href="https://www.youtube.com/watch?v=T_UXDTy23DQ&t=309s" target="blank">Here</a> is a demo video.
+<a href="https://youtu.be/QnuAnOgVisU" target="blank">Here</a> is a demo video.
